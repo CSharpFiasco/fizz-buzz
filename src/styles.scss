@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   body {
@@ -7,14 +11,18 @@ html {
     padding: 0;
   }
 
-  @include mat.theme((
-    color: mat.$azure-palette,
-    typography: Roboto,
-    density: 0
-  ));
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
 
-  @include mat.toolbar-overrides((
-    container-background-color: var(--mat-sys-primary-container),
-    container-text-color: var(--mat-sys-primary),
-  ));
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-primary-container),
+      container-text-color: var(--mat-sys-primary),
+    )
+  );
 }

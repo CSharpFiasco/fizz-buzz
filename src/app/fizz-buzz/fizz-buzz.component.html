@@ -1,0 +1,60 @@
+<button mat-raised-button color="primary" (click)="onAdd()">
+  Add another word
+</button>
+
+<mat-form-field appearance="fill">
+  <mat-label>Max number</mat-label>
+  <input matInput type="number" [formControl]="formGroup.controls.maxNumber" placeholder="100" required>
+</mat-form-field>
+
+@for(group of formGroup.controls.multiples.controls; track group) {
+<div class="content">
+  <button mat-fab (click)="onRemove(group)"><mat-icon>delete</mat-icon></button>
+  <mat-form-field appearance="fill">
+    <mat-label>Word to print</mat-label>
+    <input matInput type="text" [formControl]="group.controls.wordToPrint" placeholder="Fizz" required
+      [maxLength]="30" />
+    @if (group.controls.wordToPrint.errors){
+    <mat-error>
+      Please enter a valid word
+    </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Multiple</mat-label>
+    <input matInput type="number" [min]="1" [formControl]="group.controls.multiple" placeholder="3" required />
+    @if (group.controls.multiple.errors?.['required'] || group.controls.multiple.errors?.['min']) {
+    <mat-error>
+      Please valid a number
+    </mat-error>
+    }
+    @else if (group.controls.multiple.errors?.['duplicates']) {
+    <mat-error>Duplicate number</mat-error>
+    }
+  </mat-form-field>
+  <br />
+</div>
+}
+
+<button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!formGroup.valid">
+  Submit
+</button>
+
+@if (formGroup.controls.multiples.errors) {
+  @if (formGroup.controls.multiples.errors['required']) {
+  <mat-error>
+    Please add at least two words
+  </mat-error>
+  }
+} @else {
+<h2>Result:</h2>
+
+<mat-list role="list">
+  @for(responseItem of (fizzBuzzResponse | keyvalue); track responseItem) {
+  <mat-list-item role="listitem">
+    <span matListItemTitle>{{ responseItem.key }}</span>
+    <span matListItemLine>{{ responseItem.value }}</span>
+  </mat-list-item>
+  }
+</mat-list>
+}

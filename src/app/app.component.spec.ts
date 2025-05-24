@@ -1,10 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
+
+// stub the fizz-buzz component
+@Component({
+  selector: 'app-fizz-buzz',
+  template: '<div></div>',
+})
+class FizzBuzzStubComponent {}
+
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, FizzBuzzStubComponent],
     }).compileComponents();
   });
 
@@ -14,16 +23,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'fizz-buzz' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('fizz-buzz');
-  });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, fizz-buzz');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Fizz Buzz');
   });
 });

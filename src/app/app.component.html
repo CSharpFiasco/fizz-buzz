@@ -1,111 +1,27 @@
 <style>
   :host {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
     min-height: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  h1 {
-    font-size: 3.125rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.125rem;
-    margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
   main {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1 auto;
-    justify-content: center;
-    align-items: start;
     padding: 16px;
-    gap: 16px;
-    box-sizing: inherit;
-    position: relative;
+    flex: 1 auto;
+
   }
 
-  .content {
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    gap: 16px;
-  }
 
-  mat-list {
-    max-height: 20rem;
-    overflow-y: auto;
-    width: 100%;
-  }
 </style>
 
 <mat-toolbar>
-  <span>Fizz Buzz</span>
+  <h1>Fizz Buzz</h1>
 </mat-toolbar>
 
 <main class="main">
 
-  <button mat-raised-button color="primary" (click)="onAdd()">
-    Add another word
-  </button>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Max number</mat-label>
-    <input matInput type="number" [formControl]="formGroup.controls.maxNumber" placeholder="100" required>
-  </mat-form-field>
-
-  @for(group of formGroup.controls.multiples.controls; track group) {
-  <div class="content">
-    <button mat-fab (click)="onRemove(group)"><mat-icon>delete</mat-icon></button>
-    <mat-form-field appearance="fill">
-      <mat-label>Word to print</mat-label>
-      <input matInput type="text" [formControl]="group.controls.wordToPrint" placeholder="Fizz" required
-        [maxLength]="30">
-      @if (group.controls.wordToPrint.errors){
-      <mat-error>
-        Please enter a valid word
-      </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Multiple</mat-label>
-      <input matInput type="number" [min]="1" [formControl]="group.controls.multiple" placeholder="3" required>
-      @if (group.controls.multiple.errors){
-      <mat-error>
-        Please valid a number
-      </mat-error>
-      }
-    </mat-form-field>
-    <br />
-  </div>
-  }
-
-  <button mat-raised-button color="primary" (click)="onSubmit()">
-    Submit
-  </button>
-
-  <h2>Result:</h2>
-  <mat-list role="list">
-  @for(responseItem of (fizzBuzzResponse | keyvalue); track responseItem) {
-    <mat-list-item role="listitem">
-      <span matListItemTitle>{{ responseItem.key }}</span>
-      <span matListItemLine>{{ responseItem.value }}</span>
-    </mat-list-item>
-  }
-  </mat-list>
+  <router-outlet />
 
 </main>
 
-<router-outlet />
