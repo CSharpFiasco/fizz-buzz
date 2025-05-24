@@ -40,8 +40,8 @@ export class FizzBuzzComponent {
   protected onAdd() {
     this.formGroup.controls.multiples.push(
       new FormGroup({
-        multiple: new FormControl<number>(0, {nonNullable: true, validators: [this.getDuplicatesValidator()]}),
-        wordToPrint: new FormControl<string>('', {nonNullable: true}),
+        multiple: new FormControl<number>(6, {nonNullable: true, validators: [this.getDuplicatesValidator()]}),
+        wordToPrint: new FormControl<string>('Buzz', {nonNullable: true}),
       })
     );
   }
