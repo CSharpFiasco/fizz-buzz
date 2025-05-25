@@ -13,6 +13,10 @@
   gap: 16px;
 }
 
+h2 {
+  margin-bottom: 0;
+}
+
 mat-list {
   max-height: 20rem;
   overflow-y: auto;
@@ -21,7 +25,7 @@ mat-list {
 
 button {
   // the button gets this margin because to give
-  // it uniformity with the mat-form-field which 
+  // it uniformity with the mat-form-field which
   // has a subscript
   margin-bottom: var(--mat-form-field-subscript-text-line-height, var(--mat-sys-body-small-line-height));
 }
