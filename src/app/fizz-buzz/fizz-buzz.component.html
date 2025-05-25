@@ -13,7 +13,7 @@
     data-testid="input-max-number" />
 
     @if(formGroup.controls.maxNumber.errors?.['required']) {
-    <mat-error data-testid="error-required-max-number">
+    <mat-error data-testid="max-number-error-required">
       Please enter a valid number
     </mat-error>
     }
@@ -32,7 +32,7 @@
       [maxLength]="30"
       [attr.data-testid]="'input-word-' + idx"/>
     @if (group.controls.wordToPrint.errors){
-    <mat-error>
+    <mat-error [attr.data-testid]="'word-error-' + idx">
       Please enter a valid word
     </mat-error>
     }
@@ -48,12 +48,12 @@
       required
       [attr.data-testid]="'input-multiple-' + idx" />
     @if (group.controls.multiple.errors?.['required'] || group.controls.multiple.errors?.['min']) {
-    <mat-error [attr.data-testid]="'error-required-multiple' + idx">
+    <mat-error [attr.data-testid]="'multiple-error-required-' + idx">
       Please valid a number
     </mat-error>
     }
     @else if (group.controls.multiple.errors?.['duplicates']) {
-    <mat-error [attr.data-testid]="'error-required-duplicate' + idx">Duplicate number</mat-error>
+    <mat-error [attr.data-testid]="'multiple-error-duplicate-' + idx">Duplicate number</mat-error>
     }
   </mat-form-field>
   <br />
