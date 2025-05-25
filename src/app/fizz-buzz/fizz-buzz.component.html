@@ -79,7 +79,7 @@
 
 <mat-list role="list" data-testid="fizz-buzz-results">
   @for(responseItem of (fizzBuzzResponse | keyvalue: sortByKeyAsNumber); track responseItem) {
-  <mat-list-item role="listitem">
+  <mat-list-item role="listitem" [attr.data-testid]="'fizz-buzz-result-item' + responseItem.key">
     <span matListItemTitle>{{ responseItem.key }}</span>
     <span matListItemLine>{{ responseItem.value }}</span>
   </mat-list-item>
