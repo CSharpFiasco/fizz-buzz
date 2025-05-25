@@ -1,40 +1,42 @@
 # FizzBuzz
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+## Application Logging Strategy
+
+Several types of application logging could take place in a system like this. We assume that we're in azure but there are equivalents in AWS and GCP.
+
+1. Client side logging
+
+    This kind of logging is useful to track the actions that users take when navigating across the system. It can be useful to log when users get into undesirable states such as in a component that fails `OnInit`. We can implement this in Azure by using the [Javascript Sdk for Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/javascript-sdk)
+
+2. Client side session replay
+
+   This strategy involves recording a user's session to get some insight into the exact sequence of actions that led to particular issue or bug. It can also be useful to UX to see how a user finds features. An example of this is [User Pilot](https://userpilot.com/product/session-recording/)
+
+3. Server side logging
+
+    This kind of logging is useful to track server side exceptions as well as irregular requests. Modern systems will leverage OpenTelemetry to track requests across systems. .NET provides [tooling](https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore) to enable the application to send logs to Application Insights. In our [API](https://github.com/CSharpFiasco/fizz-buzz-api), we use Serilog to write to a file as an example of basic logging.
+
+4. Exception monitoring
+
+    When things go wrong, [different kinds of alerts](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview) should be setup to inform the appropriate teams about failing systems. This could be as simple as alerts when any exception happens, but could also involve AI-based tools
 
 ## Development server
 
 To start a local development server, run:
 
 ```bash
-ng serve
+npm run serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+Once the server is running, open your browser and navigate to `http://localhost:4200/`
 
 ## Building
 
 To build the project run:
 
 ```bash
-ng build
+npm run build
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
 ## Running unit tests
 
@@ -49,7 +51,7 @@ ng test
 For end-to-end (e2e) testing, run:
 
 ```bash
-ng e2e
+npm run cypress:run
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
