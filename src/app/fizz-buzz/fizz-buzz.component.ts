@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validator, ValidatorFn } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -97,7 +97,6 @@ export class FizzBuzzComponent {
       const typedControl = formControl as FormControl<number>;
 
       const multiples = typedControl.value;
-        console.log(multiples, typedControl.value);
 
       const duplicates = this.formGroup.controls.multiples.controls.map(c => c.controls.multiple).filter((group) => {
         if (group === typedControl) {

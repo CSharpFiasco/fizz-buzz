@@ -1,5 +1,7 @@
 # FizzBuzz
 
+This project exercises Angular Reactive Forms, Angular Material, Jasmine/Karma unit tests, as well as Cypress end-to-end tests. 
+
 ## Application Logging Strategy
 
 Several types of application logging could take place in a system like this. We assume that we're in azure but there are equivalents in AWS and GCP.
