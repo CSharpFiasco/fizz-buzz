@@ -11,6 +11,12 @@
     placeholder="100"
     required
     data-testid="input-max-number" />
+
+    @if(formGroup.controls.maxNumber.errors?.['required']) {
+    <mat-error data-testid="error-required-max-number">
+      Please enter a valid number
+    </mat-error>
+    }
 </mat-form-field>
 
 @for(group of formGroup.controls.multiples.controls; let idx = $index; track group) {
