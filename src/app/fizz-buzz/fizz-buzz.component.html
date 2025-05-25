@@ -31,8 +31,8 @@
       required
       [maxLength]="30"
       [attr.data-testid]="'input-word-' + idx"/>
-    @if (group.controls.wordToPrint.errors){
-    <mat-error [attr.data-testid]="'word-error-' + idx">
+    @if (group.controls.wordToPrint.errors?.['required']){
+    <mat-error [attr.data-testid]="'word-error-required-' + idx">
       Please enter a valid word
     </mat-error>
     }
