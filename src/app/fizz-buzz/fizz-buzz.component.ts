@@ -44,6 +44,7 @@ export class FizzBuzzComponent {
         wordToPrint: new FormControl<string>('Buzz', {nonNullable: true}),
       })
     );
+    this.formGroup.markAllAsTouched();
   }
 
   protected onRemove(group: FormGroup<any>) {
@@ -52,7 +53,7 @@ export class FizzBuzzComponent {
 
   protected onSubmit() {
     this.formGroup.markAllAsTouched();
-    
+
     const multiples = this.formGroup.controls.multiples.controls.map((group) => {
       return {
         multiple: group.controls.multiple.value,
