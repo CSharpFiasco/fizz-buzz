@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { FizzBuzzResponse, FizzBuzzService } from '../../services/fizz-buzz.service';
 import { tap } from 'rxjs';
-import { KeyValuePipe } from '@angular/common';
+import { KeyValue, KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-fizz-buzz',
@@ -118,4 +118,16 @@ export class FizzBuzzComponent {
 
     return validator;
   }
+
+  protected sortByKeyAsNumber<K, V>(a: KeyValue<K, V>, b: KeyValue<K, V>): number {
+    const aKey = Number(a.key);
+    const bKey = Number(b.key);
+
+    if (isNaN(aKey) || isNaN(bKey)) {
+      return 0; // or handle as needed
+    }
+
+    return aKey - bKey;
+  } 
+
 }

@@ -78,7 +78,7 @@
 <h2>Result:</h2>
 
 <mat-list role="list">
-  @for(responseItem of (fizzBuzzResponse | keyvalue); track responseItem) {
+  @for(responseItem of (fizzBuzzResponse | keyvalue: sortByKeyAsNumber); track responseItem) {
   <mat-list-item role="listitem">
     <span matListItemTitle>{{ responseItem.key }}</span>
     <span matListItemLine>{{ responseItem.value }}</span>
