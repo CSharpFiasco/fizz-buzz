@@ -19,6 +19,13 @@ mat-list {
   width: 100%;
 }
 
+button {
+  // the button gets this margin because to give
+  // it uniformity with the mat-form-field which 
+  // has a subscript
+  margin-bottom: var(--mat-form-field-subscript-text-line-height, var(--mat-sys-body-small-line-height));
+}
+
 @media screen and (max-width: 480px) {
   :host {
     flex-direction: column;
