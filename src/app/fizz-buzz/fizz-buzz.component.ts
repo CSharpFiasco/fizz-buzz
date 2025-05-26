@@ -38,13 +38,12 @@ export class FizzBuzzComponent {
   })
 
   protected onAdd() {
-    this.formGroup.controls.multiples.push(
-      new FormGroup({
+    const toAdd = new FormGroup({
         multiple: new FormControl<number>(6, {nonNullable: true, validators: [this.getDuplicatesValidator()]}),
-        wordToPrint: new FormControl<string>('Buzz', {nonNullable: true}),
-      })
-    );
-    this.formGroup.markAllAsTouched();
+        wordToPrint: new FormControl<string>('Bazz', {nonNullable: true}),
+      });
+    toAdd.markAllAsTouched();
+    this.formGroup.controls.multiples.push(toAdd);
   }
 
   protected onRemove(group: FormGroup<any>) {
@@ -52,8 +51,6 @@ export class FizzBuzzComponent {
   }
 
   protected onSubmit() {
-    this.formGroup.markAllAsTouched();
-
     const multiples = this.formGroup.controls.multiples.controls.map((group) => {
       return {
         multiple: group.controls.multiple.value,
@@ -127,6 +124,14 @@ export class FizzBuzzComponent {
     }
 
     return aKey - bKey;
-  } 
+  }
+
+  protected trackByKeyValue<K extends string, V extends string>(index: number, item: KeyValue<K, V>): string {
+    return item.key + item.value;
+  }
+
+  protected trackByReference(index: number, item: FormGroup<any>): FormGroup<any> {
+    return item;
+  }
 
 }

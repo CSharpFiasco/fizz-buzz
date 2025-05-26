@@ -8,7 +8,7 @@
 
 <mat-form-field appearance="fill">
   <mat-label>Max number</mat-label>
-  <input 
+  <input
     matInput
     type="number"
     [formControl]="formGroup.controls.maxNumber"
@@ -23,12 +23,12 @@
     }
 </mat-form-field>
 
-@for(group of formGroup.controls.multiples.controls; let idx = $index; track group) {
+@for(group of formGroup.controls.multiples.controls; let idx = $index; track trackByReference($index, group)) {
 <div class="content">
   <button mat-fab (click)="onRemove(group)"><mat-icon>delete</mat-icon></button>
   <mat-form-field appearance="fill">
     <mat-label>Word to print</mat-label>
-    <input 
+    <input
       matInput type="text"
       [formControl]="group.controls.wordToPrint"
       placeholder="Fizz"
@@ -78,7 +78,7 @@
 <h2>Result:</h2>
 
 <mat-list role="list" data-testid="fizz-buzz-results">
-  @for(responseItem of (fizzBuzzResponse | keyvalue: sortByKeyAsNumber); track responseItem) {
+  @for(responseItem of (fizzBuzzResponse | keyvalue: sortByKeyAsNumber); track trackByKeyValue($index, responseItem)) {
   <mat-list-item role="listitem" [attr.data-testid]="'fizz-buzz-result-item-' + responseItem.key">
     <span matListItemTitle>{{ responseItem.key }}</span>
     <span matListItemLine>{{ responseItem.value }}</span>
