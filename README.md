@@ -12,7 +12,7 @@ Several types of application logging could take place in a system like this. We 
 
 2. Client side session replay
 
-   This strategy involves recording a user's session to get some insight into the exact sequence of actions that led to particular issue or bug. It can also be useful to UX to see how a user finds features. An example of this is [User Pilot](https://userpilot.com/product/session-recording/)
+   This strategy involves recording a user's session to get some insight into the exact sequence of actions that led to a particular issue or bug. It can also be useful to UX to see how a user finds features. An example of this is [User Pilot](https://userpilot.com/product/session-recording/)
 
 3. Server side logging
 
@@ -20,7 +20,7 @@ Several types of application logging could take place in a system like this. We 
 
 4. Exception monitoring
 
-    When things go wrong, [different kinds of alerts](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview) should be setup to inform the appropriate teams about failing systems. This could be as simple as alerts when any exception happens, but could also involve AI-based tools
+    When things go wrong, [different kinds of alerts](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview) should be set up to inform the appropriate teams about failing systems. This could be as simple as alerts when any exception happens, but could also involve AI-based tools
 
 ## Development server
 
